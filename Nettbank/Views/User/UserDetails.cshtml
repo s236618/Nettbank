@@ -1,0 +1,54 @@
+﻿@model Nettbank.Model.User
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detaljer</title>
+</head>
+<body>
+    <div>
+        <h4>Bruker</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.adress)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.adress)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.zip)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.zip)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.persNr)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.persNr)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Endre", "Endre", new { id = Model.persNr }, new { @class = "btn btn-success" })
+        @Html.ActionLink("Brukeroversikt", "UserList", new { tom = "" }, new { @class = "btn btn-primary" })
+    </p>
+</body>
+</html>

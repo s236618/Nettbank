@@ -1,0 +1,60 @@
+﻿@model List<Nettbank.Model.Payment>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List</title>
+</head>
+<ul class="nav nav-pills">
+    <li>@Html.ActionLink("Kontooversikt", "AccountOverview", "Account")</li>
+    <li>@Html.ActionLink("Betalingsoversikt", "List", "Payment", new { @class = "btn btn-success" })</li>
+    <li>@Html.ActionLink("Ny betaling", "Register", "Payment")</li>
+</ul>
+<body>
+    <br /><br />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].accNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].kid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].date)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.accNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.kid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+                </td>
+                <td>
+                    @Html.ActionLink("Endre", "Change", new { id = item.id }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("Detalj", "Details", new { id = item.id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Slette", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    @Html.ActionLink("Ny betaling", "Register", new { tom = "" }, new { @class = "btn btn-success" })
+</body>
+</html>

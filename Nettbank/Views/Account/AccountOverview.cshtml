@@ -1,0 +1,51 @@
+﻿@model List<Nettbank.Model.Account>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Kontooversikt</title>
+</head>
+<ul class="nav nav-pills">
+    <li>@Html.ActionLink("Kontooversikt", "AccountOverview", "Account", new { @class = "btn btn-success" })</li>
+    <li>@Html.ActionLink("Betalingsoversikt", "List", "Payment")</li>
+    <li>@Html.ActionLink("Ny betaling", "Register", "Payment")</li>
+</ul>
+<body>
+    <br /><br />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].accNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].balance)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.accNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.balance)
+                </td>
+                <td>
+                </td>
+            </tr>
+        }
+    </table>
+
+    @Html.ActionLink("Ny betaling", "Register","Payment", new { tom = "" }, new { @class = "btn btn-success" })
+</body>
+</html>
